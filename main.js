@@ -4,25 +4,25 @@ const { createApp, ref } = Vue
 
 createApp({
     setup() {
-        const card = ref(false);
-        const resultImage = ref({});
+        const isClickable = ref(true);
+        const resultImage = ref('');
 
         const getCard = () => {
-            card.value = true;
-            // const result = Math.floor(Math.random() * 50) + 1;
             let result = weightedRandom(options);
             console.log(result);
-            resultImage.value = {
-                backgroundImage: `url("image/${result}")`
-            };
+            resultImage.value =  `./image/${result}`;
+            console.log(resultImage.value);
+            document.querySelector('.image').classList.add('flip');
+            isClickable.value = false;
         }
 
         const backToChoose = () => {
-            card.value = false;
+            document.querySelector('.image').classList.remove('flip');
+            isClickable.value = true;
         }
 
         return {
-            card,
+            isClickable,
             resultImage,
             getCard,
             backToChoose
@@ -46,56 +46,56 @@ const weightedRandom = (options) => {
 
 let options = [
     // SSR
-    { value: 'SSR/01PRK.png', weight: 0.01 },
-    { value: 'SSR/02SOM.png', weight: 0.01 },
-    { value: 'SSR/03LBY.png', weight: 0.01 },
+    { value: 'SSR/01PRK.jpg', weight: 0.01 },
+    { value: 'SSR/02SOM.jpg', weight: 0.01 },
+    { value: 'SSR/03LBY.jpg', weight: 0.01 },
     // SR
-    { value: 'SR/04ERI.png', weight: 0.0156 },
-    { value: 'SR/05YE.png', weight: 0.0156 },
-    { value: 'SR/06NGA.png', weight: 0.0156 },
-    { value: 'SR/07PAK.png', weight: 0.0156 },
-    { value: 'SR/08SDN.png', weight: 0.0156 },
-    { value: 'SR/09IRN.png', weight: 0.0156 },
-    { value: 'SR/10AFG.png', weight: 0.0156 },
-    { value: 'SR/11IND.png', weight: 0.0156 },
-    { value: 'SR/12SYR.png', weight: 0.0156 },
-    { value: 'SR/13SAU.png', weight: 0.0156 },
+    { value: 'SR/04ERI.jpg', weight: 0.0156 },
+    { value: 'SR/05YE.jpg', weight: 0.0156 },
+    { value: 'SR/06NGA.jpg', weight: 0.0156 },
+    { value: 'SR/07PAK.jpg', weight: 0.0156 },
+    { value: 'SR/08SDN.jpg', weight: 0.0156 },
+    { value: 'SR/09IRN.jpg', weight: 0.0156 },
+    { value: 'SR/10AFG.jpg', weight: 0.0156 },
+    { value: 'SR/11IND.jpg', weight: 0.0156 },
+    { value: 'SR/12SYR.jpg', weight: 0.0156 },
+    { value: 'SR/13SAU.jpg', weight: 0.0156 },
     // R
-    { value: 'R/14MLI.png', weight: 0.022 },
-    { value: 'R/15DZA.png', weight: 0.022 },
-    { value: 'R/16IRQ.png', weight: 0.022 },
-    { value: 'R/17MMR.png', weight: 0.022 },
-    { value: 'R/18MDV.png', weight: 0.022 },
-    { value: 'R/19CHN.png', weight: 0.022 },
-    { value: 'R/20BF.png', weight: 0.022 },
-    { value: 'R/21LAO.png', weight: 0.022 },
-    { value: 'R/22CUB.png', weight: 0.022 },
-    { value: 'R/23MRT.png', weight: 0.022 },
-    { value: 'R/24MAR.png', weight: 0.022 },
-    { value: 'R/25UZB.png', weight: 0.022 },
-    { value: 'R/26BGD.png', weight: 0.022 },
-    { value: 'R/27NER.png', weight: 0.022 },
-    { value: 'R/28CAF.png', weight: 0.022 },
-    { value: 'R/29TKM.png', weight: 0.022 },
-    { value: 'R/30NIC.png', weight: 0.022 },
-    { value: 'R/31OMN.png', weight: 0.022 },
-    { value: 'R/32ETH.png', weight: 0.022 },
-    { value: 'R/33TUN.png', weight: 0.022 },
-    { value: 'R/34COL.png', weight: 0.022 },
-    { value: 'R/35VNM.png', weight: 0.022 },
-    { value: 'R/36BTN.png', weight: 0.022 },
-    { value: 'R/37MEX.png', weight: 0.022 },
-    { value: 'R/38EGY.png', weight: 0.022 },
-    { value: 'R/39MOZ.png', weight: 0.022 },
-    { value: 'R/40QAT.png', weight: 0.022 },
-    { value: 'R/41COD.png', weight: 0.022 },
-    { value: 'R/42IDN.png', weight: 0.022 },
-    { value: 'R/43CMR.png', weight: 0.022 },
-    { value: 'R/44BRN.png', weight: 0.022 },
-    { value: 'R/45COM.png', weight: 0.022 },
-    { value: 'R/46TJK.png', weight: 0.022 },
-    { value: 'R/47KAZ.png', weight: 0.022 },
-    { value: 'R/48JOR.png', weight: 0.022 },
-    { value: 'R/49MYS.png', weight: 0.022 },
-    { value: 'R/50TUR.png', weight: 0.022 },
+    { value: 'R/14MLI.jpg', weight: 0.022 },
+    { value: 'R/15DZA.jpg', weight: 0.022 },
+    { value: 'R/16IRQ.jpg', weight: 0.022 },
+    { value: 'R/17MMR.jpg', weight: 0.022 },
+    { value: 'R/18MDV.jpg', weight: 0.022 },
+    { value: 'R/19CHN.jpg', weight: 0.022 },
+    { value: 'R/20BF.jpg', weight: 0.022 },
+    { value: 'R/21LAO.jpg', weight: 0.022 },
+    { value: 'R/22CUB.jpg', weight: 0.022 },
+    { value: 'R/23MRT.jpg', weight: 0.022 },
+    { value: 'R/24MAR.jpg', weight: 0.022 },
+    { value: 'R/25UZB.jpg', weight: 0.022 },
+    { value: 'R/26BGD.jpg', weight: 0.022 },
+    { value: 'R/27NER.jpg', weight: 0.022 },
+    { value: 'R/28CAF.jpg', weight: 0.022 },
+    { value: 'R/29TKM.jpg', weight: 0.022 },
+    { value: 'R/30NIC.jpg', weight: 0.022 },
+    { value: 'R/31OMN.jpg', weight: 0.022 },
+    { value: 'R/32ETH.jpg', weight: 0.022 },
+    { value: 'R/33TUN.jpg', weight: 0.022 },
+    { value: 'R/34COL.jpg', weight: 0.022 },
+    { value: 'R/35VNM.jpg', weight: 0.022 },
+    { value: 'R/36BTN.jpg', weight: 0.022 },
+    { value: 'R/37MEX.jpg', weight: 0.022 },
+    { value: 'R/38EGY.jpg', weight: 0.022 },
+    { value: 'R/39MOZ.jpg', weight: 0.022 },
+    { value: 'R/40QAT.jpg', weight: 0.022 },
+    { value: 'R/41COD.jpg', weight: 0.022 },
+    { value: 'R/42IDN.jpg', weight: 0.022 },
+    { value: 'R/43CMR.jpg', weight: 0.022 },
+    { value: 'R/44BRN.jpg', weight: 0.022 },
+    { value: 'R/45COM.jpg', weight: 0.022 },
+    { value: 'R/46TJK.jpg', weight: 0.022 },
+    { value: 'R/47KAZ.jpg', weight: 0.022 },
+    { value: 'R/48JOR.jpg', weight: 0.022 },
+    { value: 'R/49MYS.jpg', weight: 0.022 },
+    { value: 'R/50TUR.jpg', weight: 0.022 },
 ];
