@@ -13,9 +13,6 @@
 
 <body>
     <div id="app" class="wrap">
-        <!-- <div v-if="!card" class="choose">
-            <button v-on:click="getCard">點擊抽卡</button>
-        </div> -->
         <div class="result">
             <div class="image">
                 <div class="card-front">
@@ -27,7 +24,7 @@
             </div>
             <div  class="imageButton">
                 <span v-if="isClickable">點擊上方卡片開始禱告</span>
-                <button v-else v-on:click="backToChoose">再抽一次</button>
+                <div v-else v-on:click="backToChoose">再抽一次</div>
             </div>
             
         </div>
